@@ -1,27 +1,26 @@
-const {src, dest, parallel, series, task} = require("gulp");
+const {src, dest} = require("gulp");
+const map = require('map-stream');
 
 require('dotenv').config({
     path: './env/.env'
 })
 
-const json = {
-    host: process.env.DB_HOST,
-    databaseName: process.env.DB_NAME,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    port: process.env.port
+const domain = {
+    www: process.env.DOMAIN_WWW,
+    api: process.env.DOMAIN_API,
 }
 
-const test = (done) => {// OK
-    console.log(json)
-    done()
-}
-
-const outfile_test = (done) => {// 让生成到 dist 目录下的 test.js 文件，可以直接在浏览器客户端使用
+const test = (done) => {
     src('./src/test.js')
-        .pipe(dest('./dist/'))
+        .pipe(map(function (file, done) {
+            let html = file.contents.toString();
+            html = html.replace(/process.env.DOMAIN_WWW/, `'${domain.www}'`);
+            html = html.replace(/process.env.DOMAIN_API/, `'${domain.api}'`);
+            file.contents = Buffer.from(html);
+            done(null, file);
+        }))
+        .pipe(dest('./dist/'));
     done()
 }
 
-exports.test = test
-exports.outfile_test = outfile_test
+module.exports = {test};

@@ -4,8 +4,7 @@
   "description": "输入env值到js文件统一的全局变量中",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test",
-    "outfile_test": "gulp outfile_test"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -20,6 +19,7 @@
   "dependencies": {},
   "devDependencies": {
     "dotenv": "^10.0.0",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "map-stream": "0.0.7"
   }
 }
