@@ -1,0 +1,22 @@
+{
+  "name": "test_dotenv_js",
+  "version": "0.0.1",
+  "description": "输入env值到js文件统一的全局变量中或者",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZhangChengLin/gulpPluginTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZhangChengLin/gulpPluginTest/issues"
+  },
+  "homepage": "https://github.com/ZhangChengLin/gulpPluginTest#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "gulp": "^4.0.2"
+  }
+}
