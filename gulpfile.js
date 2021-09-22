@@ -13,10 +13,11 @@ const domain = {
 const test = (done) => {
     src('./src/test.js')
         .pipe(map(function (file, done) {
-            let html = file.contents.toString();
-            html = html.replace(/process.env.DOMAIN_WWW/, `'${domain.www}'`);
-            html = html.replace(/process.env.DOMAIN_API/, `'${domain.api}'`);
-            file.contents = Buffer.from(html);
+            let content = file.contents.toString();
+            content = content.replace(/process.env.DOMAIN_WWW/g, `'${domain.www}'`);
+            content = content.replace(/process.env.DOMAIN_API/g, `'${domain.api}'`);
+            // 如果是 node 10.0 之前的版本，Buffer.from(content) 要改成 new Buffer(content)
+            file.contents = Buffer.from(content);
             done(null, file);
         }))
         .pipe(dest('./dist/'));
