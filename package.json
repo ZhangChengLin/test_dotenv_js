@@ -1,7 +1,7 @@
 {
   "name": "test_dotenv_js",
   "version": "0.0.1",
-  "description": "输入env值到js文件统一的全局变量中",
+  "description": "js文件中的变量值可以由 env 文件的键值对管理",
   "main": "index.js",
   "scripts": {
     "test": "gulp test"
